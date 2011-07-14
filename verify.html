@@ -1,0 +1,14 @@
+<html>
+   <head>
+      <title>{{ title }}</title>
+   </head>
+   <body>
+     {{ alias }} is already mapped to {{ oldlink }}. Hit Submit to overwrite.
+     <form action="/new" method="post" >
+       <input name="alias" type="text" value="{{ alias }}" />
+       <input name="link"  type="text" value="{{ link }}"  />
+       <input name="forceUpdate"  type="hidden" value="{{1}}"  />
+       <input type="submit" />
+     </form>
+   </body>
+</html>
