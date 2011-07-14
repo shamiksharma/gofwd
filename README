@@ -1,0 +1,14 @@
+To start the alias server
+% python gofwd.py -d gofwd.db
+
+You can add alias by
+http://localhost:8080/alias/yhoo
+
+You can go to an alias by 
+http://localhost:8080/go/yhoo
+
+If you set your local DNS server (or /etc/hosts) to point
+go ->  127.0.0.1
+
+then you can just do
+go:8080/go/aol

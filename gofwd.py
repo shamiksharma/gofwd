@@ -73,7 +73,7 @@ class GoHandler(BaseHandler):
 
 class Application(tornado.web.Application):
   def __init__(self, dbFile):
-    handlers =  [ (r"/go/([^/]+)", GoHandler), (r"/alias/([^/]+)", AliasHandler), (r"/new", NewHandler)  ]
+    handlers =  [ (r"/([^/]+)", GoHandler), (r"/alias/([^/]+)", AliasHandler), (r"/new", NewHandler)  ]
     settings = {}
     tornado.web.Application.__init__(self, handlers, **settings)
     self.db = database.Connection(dbFile)
