@@ -48,7 +48,6 @@ class Connection(object):
         self._db_args = args
         self._last_use_time = time.time()
         try:
-            print "database = " + database
             self.reconnect()
         except:
             logging.error("Cannot connect to Sqlite3 on %s", self.host, exc_info=True)
@@ -137,10 +136,9 @@ class Connection(object):
 
     def _execute(self, cursor, query, parameters):
         try:
-            print query
-            print parameters
             cursor.execute(query, parameters)
             self._db.commit()
+            return
         except OperationalError:
             logging.error("Error connecting to SQLite3 on %s", self.host)
             self.close()
