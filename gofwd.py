@@ -31,6 +31,7 @@ class NewHandler(BaseHandler):
     
 
   def post(self):
+
     alias = self.get_argument("alias")
     link  = self.get_argument("link")
     forceUpdate = self.get_argument("forceUpdate", False)
@@ -54,7 +55,7 @@ class GoHandler(BaseHandler):
   def get(self, slug):
     alias = slug  
     self.write("Redirecting for alias : " + slug)
-    print "in go handler"
+    print "in go handler with slug = %s" % slug
 
     sqlString = 'select * from gofwd where alias = "%s" ' % (alias)
     print sqlString
@@ -108,6 +109,8 @@ def main(argv=None):
 
       settings = { } 
       
+      print "Starting alias server at http://localhost:%s/ using db=%s" % (port,db)
+
       http_server = tornado.httpserver.HTTPServer(Application(db))
       http_server.listen(port)
       tornado.ioloop.IOLoop.instance().start()
